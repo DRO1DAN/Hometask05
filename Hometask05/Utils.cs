@@ -1,10 +1,25 @@
 ﻿using System.Text.Json;
+using System.Text;
 
 static class Utils
 {
-    public static T Deserialize<T>(string path)
+    public static List<Book> Deserialize(string path)
     {
-        string jsonText = File.ReadAllText(path, System.Text.Encoding.UTF8);
-        return JsonSerializer.Deserialize<T>(jsonText);
+        if (!File.Exists(path))
+        {
+            Console.WriteLine($"File not found: {path}");
+            return null;
+        }
+
+        try
+        {
+            string jsonText = File.ReadAllText(path, Encoding.UTF8);
+            return JsonSerializer.Deserialize<List<Book>>(jsonText);
+        }
+        catch
+        {
+            Console.WriteLine("An error occurred during deserialization.");
+            return null;
+        }
     }
 }

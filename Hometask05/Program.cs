@@ -7,12 +7,19 @@ class Program
     {
         Console.OutputEncoding = Encoding.UTF8;
 
-        List<Book> books = Deserialize<List<Book>>("D:\\Visual Studio\\С#\\Hometask05\\Hometask05\\jsonFile.json");
+        List<Book> books = Deserialize("D:\\Visual Studio\\С#\\Hometask05\\Hometask05\\jsonFile.json");
 
-        books.ForEach(
+        if(books != null)
+        {
+            books.ForEach(
             book => Console.WriteLine(
                 $"title: {book.Title}\npublisher: {book.PublishingHouse.Name}\npublisher ID: {book.PublishingHouseId}\n"
                 )
             );
+        }
+        else
+        {
+            Console.WriteLine("No books found");
+        }
     }
 }
