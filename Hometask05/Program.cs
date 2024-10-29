@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using static Utils;
 
 class Program
 {
@@ -6,7 +7,7 @@ class Program
     {
         Console.OutputEncoding = Encoding.UTF8;
 
-        List<Book> books = Utils.Deserialize<List<Book>>("D:\\Visual Studio\\С#\\Hometask05\\Hometask05\\jsonFile.json");
+        List<Book> books = Deserialize<List<Book>>("D:\\Visual Studio\\С#\\Hometask05\\Hometask05\\jsonFile.json");
 
         books.ForEach(
             book => Console.WriteLine(
